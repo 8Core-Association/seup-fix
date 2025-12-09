@@ -63,5 +63,4 @@ CREATE TABLE IF NOT EXISTS llx_a_zaprimanje (
     REFERENCES llx_ecm_files(rowid) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT fk_zaprimanja_akt FOREIGN KEY (fk_akt_za_prilog)
     REFERENCES llx_a_akti(ID_akta) ON DELETE SET NULL ON UPDATE CASCADE
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Evidencija zaprimljene dokumentacije';
