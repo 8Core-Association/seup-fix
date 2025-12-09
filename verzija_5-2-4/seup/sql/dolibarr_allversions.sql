@@ -364,10 +364,10 @@ CREATE TABLE IF NOT EXISTS llx_a_otprema (
 
 
 -- =============================================================================
--- TABLE: a_zaprimanja
+-- TABLE: a_zaprimanje
 -- Purpose: Incoming document reception tracking
 -- =============================================================================
-CREATE TABLE IF NOT EXISTS llx_a_zaprimanja (
+CREATE TABLE IF NOT EXISTS llx_a_zaprimanje (
     ID_zaprimanja int(11) NOT NULL AUTO_INCREMENT,
 
     -- Link to subject/case
