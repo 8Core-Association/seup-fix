@@ -638,6 +638,8 @@ class Predmet_Action_Handler
             $tip_dokumenta = GETPOST('tip_dokumenta', 'alpha');
             $fk_akt_za_prilog = GETPOST('fk_akt_za_prilog', 'int');
             $fk_posiljatelj = GETPOST('fk_posiljatelj', 'int');
+            $posiljatelj_naziv = GETPOST('posiljatelj_search', 'alphanohtml');
+            $posiljatelj_broj = GETPOST('posiljatelj_broj', 'alphanohtml');
             $datum_zaprimanja = GETPOST('datum_zaprimanja', 'alpha');
             $nacin_zaprimanja = GETPOST('nacin_zaprimanja', 'alpha');
             $napomena = GETPOST('napomena', 'restricthtml');
@@ -670,14 +672,17 @@ class Predmet_Action_Handler
                 $nacin_zaprimanja,
                 $user->id,
                 $fk_potvrda_ecm_file,
-                $napomena
+                $napomena,
+                $posiljatelj_naziv,
+                $posiljatelj_broj,
+                $fk_akt_za_prilog
             );
 
             if (!$zaprimanje_id) {
                 throw new Exception('Greška pri registraciji zaprimanja: ' . $db->lasterror());
             }
 
-            if ($tip_dokumenta === 'akt') {
+            if ($tip_dokumenta === 'novi_akt') {
                 require_once __DIR__ . '/akt_helper.class.php';
                 Akt_Helper::createAktiTable($db);
                 $akt_result = Akt_Helper::createAkt($db, $caseId, $fk_ecm_file, $user->id);

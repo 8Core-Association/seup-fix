@@ -164,7 +164,7 @@ class Predmet_View
                 print '<div class="seup-zaprimanja-main">';
                 print '<div class="seup-zaprimanja-doc-info">';
                 print '<span class="seup-doc-badge seup-doc-badge-' . $zaprimanje->tip_dokumenta . '">';
-                print '<i class="fas ' . ($zaprimanje->tip_dokumenta == 'akt' ? 'fa-file-alt' : 'fa-paperclip') . '"></i> ';
+                print '<i class="fas ' . ($zaprimanje->tip_dokumenta == 'novi_akt' ? 'fa-file-alt' : 'fa-paperclip') . '"></i> ';
                 print strtoupper($zaprimanje->tip_dokumenta);
                 print '</span>';
                 print '<span class="seup-doc-filename">' . htmlspecialchars($zaprimanje->doc_filename) . '</span>';
@@ -765,9 +765,9 @@ class Predmet_View
         print '<label for="tip_dokumenta" class="seup-label">Tip dokumenta *</label>';
         print '<select id="tip_dokumenta" name="tip_dokumenta" class="seup-select" required>';
         print '<option value="">-- Odaberite tip --</option>';
-        print '<option value="akt">Novi Akt</option>';
+        print '<option value="novi_akt">Novi Akt</option>';
         print '<option value="prilog_postojecem">Prilog postojećem aktu</option>';
-        print '<option value="nedodjeljeno">Nedodjeljeno</option>';
+        print '<option value="nerazvrstan">Nerazvrstan</option>';
         print '</select>';
         print '</div>';
 
