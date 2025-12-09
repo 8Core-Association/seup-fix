@@ -205,13 +205,30 @@
 
             const formData = new FormData(form);
             console.log('FormData created');
+            console.log('Action:', formData.get('action'));
+            console.log('Tip dokumenta:', formData.get('tip_dokumenta'));
 
             fetch(window.location.href, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
+            .then(response => {
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                return response.text();
+            })
+            .then(text => {
+                console.log('Raw response:', text);
+                try {
+                    const data = JSON.parse(text);
+                    return data;
+                } catch(e) {
+                    console.error('JSON parse error:', e);
+                    throw new Error('Response is not valid JSON: ' + text.substring(0, 200));
+                }
+            })
             .then(data => {
+                console.log('Parsed data:', data);
                 if (data.success) {
                     showMessage('Dokument uspješno zaprimljen!', 'success');
                     closeModal();
